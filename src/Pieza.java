@@ -9,7 +9,7 @@ public class Pieza {
 		return color;
 	}
 	
-	private void girarPieza() {
+	public void girarPieza() {
 		if(this.color == false) {
 			this.color = true;
 		} else {
