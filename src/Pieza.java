@@ -10,6 +10,10 @@ public class Pieza {
 	}
 	
 	private void girarPieza() {
-		
+		if(this.color == false) {
+			this.color = true;
+		} else {
+			this.color = false;
+		}
 	}
 }
