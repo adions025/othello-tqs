@@ -7,10 +7,10 @@ public class Juego {
 	
 
 	public Juego() {
-		tablero = new Tablero();
-		jugadores = new Jugador[2];
-		jugadores[0] = new Jugador(true);
-		jugadores[1] = new Jugador(false);
+		this.tablero = new Tablero();
+		this.jugadores = new Jugador[2];
+		this.jugadores[0] = new Jugador(Color.Negra);
+		this.jugadores[1] = new Jugador(Color.Blanca);
 	}
 	
 	
@@ -19,7 +19,7 @@ public class Juego {
 	}
 
 
-	public static Jugador getJugadores(int jugador) {
+	public static Jugador getJugador(int jugador) {
 		return jugadores[jugador];
 	}
 }
