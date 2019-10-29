@@ -2,19 +2,17 @@ package juego;
 
 public class Jugador {
 	
-	private boolean color;
+	private Color color;
 	
 	
-	public Jugador(boolean c) {
-		color = c;
+	public Jugador(Color c) {
+		this.color = c;
 		
 	}
-	
-	
-	public boolean isColor() {
+
+	public Color getColor() {
 		return color;
 	}
-
 	
 
 }
