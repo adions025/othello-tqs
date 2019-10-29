@@ -1,19 +1,23 @@
 
 public class Pieza {
-	private boolean color;
-	public Pieza (boolean color) {
-		this.color = color;
-	}
+
+	private Color color;
 	
-	public boolean isColor() {
-		return color;
+	public Pieza (Color c) {
+		this.color = c;
 	}
 	
 	public void girarPieza() {
-		if(this.color == false) {
-			this.color = true;
-		} else {
-			this.color = false;
+		if(this.color == Color.Negra) {
+			this.color = Color.Blanca;
+		} 
+		else {
+			this.color = Color.Negra;
 		}
 	}
+	
+	public Color getColor() {
+		return color;
+	}
+	
 }

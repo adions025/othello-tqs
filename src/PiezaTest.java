@@ -13,13 +13,15 @@ class PiezaTest {
 	@AfterEach
 	void tearDown() throws Exception {
 	}
-
+	/*
 	@Test
+	
 	void testFalsetoTrue() {
 		Pieza p = new Pieza(false);
 		p.girarPieza();
 		assertEquals(p.isColor(), true);
 	}
+	
 	
 	@Test
 	void testTruetoFalse() {
@@ -27,5 +29,21 @@ class PiezaTest {
 		p.girarPieza();
 		assertEquals(p.isColor(), false);
 	}
+	*/
+	@Test
+	void testGirarPiezaNegratoBlanca() {
+		Pieza p = new Pieza(Color.Negra);
+		p.girarPieza();
+		assertEquals(p.getColor(), Color.Blanca);
+	}
+	
+	@Test
+	void testGirarPiezaBlancatoNegra() {
+		Pieza p = new Pieza(Color.Blanca);
+		p.girarPieza();
+		assertEquals(p.getColor(), Color.Negra);
+	}
+
+	
 
 }
