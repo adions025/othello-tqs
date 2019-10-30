@@ -5,6 +5,10 @@ public class Tablero {
 	
 	public Tablero() {
 		this.tablero = new Pieza[8][8];
+		this.tablero[3][3] = new Pieza(Color.Blanca);
+		this.tablero[3][4] = new Pieza(Color.Negra);
+		this.tablero[4][3] = new Pieza(Color.Negra);
+		this.tablero[4][4] = new Pieza(Color.Blanca);
 	}
 	
 	public String toString() 
@@ -17,6 +21,12 @@ public class Tablero {
 					frame += "  -";
 				} 
 				else {
+					switch (this.tablero[i][j].getColor()) {
+					case Negra: frame += " N"; break;
+					case Blanca: frame += " B"; break;	
+					default:
+						frame += "?";
+					}
 
 				}
 			}
