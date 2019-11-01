@@ -36,4 +36,8 @@ public class Tablero {
 		return frame;
 	}
 	
+	public Pieza[][] getTablero() {
+		return this.tablero;
+	}
+	
 }
