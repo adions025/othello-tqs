@@ -10,50 +10,7 @@ import juego.Color;
 
 class TableroTest {
 
-	//@Test
-	void testContructorTablero() {
-		Juego juego = new Juego();
-		
-		Tablero tablero;
-		tablero = juego.getTablero();
-		
-		String tableroEsperado = ""
-				+ "   1  2  3  4  5  6  7  8\n" + 
-				"1  -  -  -  -  -  -  -  -\n" + 
-				"2  -  -  -  -  -  -  -  -\n" + 
-				"3  -  -  -  -  -  -  -  -\n" + 
-				"4  -  -  -  -  -  -  -  -\n" + 
-				"5  -  -  -  -  -  -  -  -\n" + 
-				"6  -  -  -  -  -  -  -  -\n" + 
-				"7  -  -  -  -  -  -  -  -\n" + 
-				"8  -  -  -  -  -  -  -  -";
-		
-		assertEquals(tableroEsperado, tablero);
-		
-	}
-	
-	//@Test
-	void testTableroInicializado() {
-		Juego juego = new Juego();
-		
-		Tablero tablero;
-		tablero = juego.getTablero();
-		
-		String tableroEsperado = ""
-				+ "   1  2  3  4  5  6  7  8\n" + 
-				"1  -  -  -  -  -  -  -  -\n" + 
-				"2  -  -  -  -  -  -  -  -\n" + 
-				"3  -  -  -  -  -  -  -  -\n" + 
-				"4  -  -  -  B  N  -  -  -\n" + 
-				"5  -  -  -  N  B  -  -  -\n" + 
-				"6  -  -  -  -  -  -  -  -\n" + 
-				"7  -  -  -  -  -  -  -  -\n" + 
-				"8  -  -  -  -  -  -  -  -";
-		
-		assertEquals(tableroEsperado, tablero);
-		
-	}
-	
+
 	@Test
 	void testConstructorTablero() {
 	
@@ -77,9 +34,10 @@ class TableroTest {
 	
 	@Test
 	void testColocarPiezaTablero() {
+		
 		Tablero tablero = new Tablero();
 		
-		//
+		//esquinas
 		assertTrue(tablero.colocarPieza(0, 0, Color.Blanca));
 		assertFalse(tablero.colocarPieza(0, 0, Color.Negra));
 		
@@ -92,7 +50,7 @@ class TableroTest {
 		assertTrue(tablero.colocarPieza(7, 7, Color.Blanca));
 		assertFalse(tablero.colocarPieza(7, 7, Color.Negra));
 		
-		//
+		//laterales
 		assertTrue(tablero.colocarPieza(0, 5, Color.Blanca));
 		assertFalse(tablero.colocarPieza(0, 5, Color.Negra));
 		
@@ -103,17 +61,29 @@ class TableroTest {
 		assertFalse(tablero.colocarPieza(7, 5, Color.Blanca));
 	
 		assertTrue(tablero.colocarPieza(5, 7, Color.Blanca));
-		assertFalse(tablero.colocarPieza(5, 7, Color.Negra));		
+		assertFalse(tablero.colocarPieza(5, 7, Color.Negra));	
+		
+		//centros
+		assertFalse(tablero.colocarPieza(3, 3, Color.Negra));
+		assertFalse(tablero.colocarPieza(3, 4, Color.Negra));
+		
+		assertFalse(tablero.colocarPieza(3, 3, Color.Blanca));
+		assertFalse(tablero.colocarPieza(3, 4, Color.Blanca));
+		
+		assertFalse(tablero.colocarPieza(4, 3, Color.Negra));
+		assertFalse(tablero.colocarPieza(4, 4, Color.Negra));
+		
+		assertFalse(tablero.colocarPieza(4, 3, Color.Blanca));
+		assertFalse(tablero.colocarPieza(4, 4, Color.Blanca));
 		
 	}
 	
 	@Test
 	void testColocarPiezaTableroFueradePosicion() {
-		Tablero tablero = new Tablero();
-		System.out.println(tablero);
-		//
-		assertFalse(tablero.colocarPieza(-1, 0, Color.Blanca));
 		
+		Tablero tablero = new Tablero();
+		
+		//
 		assertFalse(tablero.colocarPieza(0, -1, Color.Blanca));
 		assertFalse(tablero.colocarPieza(-1, -1, Color.Blanca));
 		assertFalse(tablero.colocarPieza(-1, 7, Color.Blanca));
@@ -124,9 +94,22 @@ class TableroTest {
 		assertFalse(tablero.colocarPieza(8, -1, Color.Blanca));
 		assertFalse(tablero.colocarPieza(7, 8, Color.Blanca));
 		assertFalse(tablero.colocarPieza(8, 7, Color.Blanca));
-		assertFalse(tablero.colocarPieza(8, 8, Color.Blanca));
+		assertFalse(tablero.colocarPieza(8, 8, Color.Blanca));	
 		
 		
+		assertFalse(tablero.colocarPieza(-5, 0, Color.Blanca));
+		assertFalse(tablero.colocarPieza(0, -3, Color.Blanca));
+		assertFalse(tablero.colocarPieza(-2, -4, Color.Blanca));
+		assertFalse(tablero.colocarPieza(-5, 7, Color.Blanca));
+		assertFalse(tablero.colocarPieza(-0, 11, Color.Blanca));
+		assertFalse(tablero.colocarPieza(-4, 9, Color.Blanca));
+		assertFalse(tablero.colocarPieza(9, 0, Color.Blanca));
+		assertFalse(tablero.colocarPieza(7, -2, Color.Blanca));
+		assertFalse(tablero.colocarPieza(10, -3, Color.Blanca));
+		assertFalse(tablero.colocarPieza(7, 10, Color.Blanca));
+		assertFalse(tablero.colocarPieza(9, 7, Color.Blanca));
+		assertFalse(tablero.colocarPieza(11, 13, Color.Blanca));
+			
 	}
 
 }
