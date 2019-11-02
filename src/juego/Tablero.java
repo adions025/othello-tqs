@@ -42,10 +42,26 @@ public class Tablero {
 		return this.tablero;
 	}
 	
+	
 	public boolean colocarPieza(int fila, int columna, Color color) {
 		
-		this.tablero[fila][columna] = new Pieza(color);
-		return true;
+		boolean colocarflag;
+		
+		if (fila <0 || fila>7 || columna<0 || columna>7) {
+			colocarflag = false;
+		}
+		
+		else if ((this.tablero[fila][columna] != null ))  {
+			colocarflag = false;	
+		}
+		
+		else {
+			colocarflag = true;
+			this.tablero[fila][columna] = new Pieza(color);
+		}
+	
+		return colocarflag;
 	}
+	
 		
 }
