@@ -15,5 +15,9 @@ class JuegoTest {
 		jugador1 = Juego.getJugador(0);
 		assertEquals(Color.Negra, jugador1.getColor());
 		
+		Jugador jugador2;
+		jugador2 = Juego.getJugador(1);
+		assertEquals(Color.Blanca, jugador2.getColor());
+		
 	}
 }
