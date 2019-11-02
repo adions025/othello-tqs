@@ -58,9 +58,7 @@ class TableroTest {
 	void testConstructorTablero() {
 	
 		Tablero tablero = new Tablero();
-		
-		System.out.print(tablero);
-		
+				
 		for (int i = 0; i < tablero.getTablero().length; i++) {
 			for (int j = 0; j < tablero.getTablero().length; j++) {
 				if((i == 3 & j == 3)||(i == 4 && j == 4)) {
@@ -74,6 +72,16 @@ class TableroTest {
 				}
 			}
 		}
+	}
+	
+	
+	@Test
+	void testColocarPiezaTablero() {
+		Tablero tablero = new Tablero();
+		tablero.colocarPieza(0, 0, Color.Blanca);
+		
+		
+		
 	}
 
 }
