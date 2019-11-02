@@ -11,6 +11,7 @@ public class Tablero {
 		this.tablero[4][4] = new Pieza(Color.Blanca);
 	}
 	
+
 	public String toString() 
 	{
 		String frame = "   1  2  3  4  5  6  7  8\n";
@@ -36,8 +37,15 @@ public class Tablero {
 		return frame;
 	}
 	
+	
 	public Pieza[][] getTablero() {
 		return this.tablero;
 	}
 	
+	public boolean colocarPieza(int fila, int columna, Color color) {
+		
+		this.tablero[fila][columna] = new Pieza(color);
+		return true;
+	}
+		
 }
