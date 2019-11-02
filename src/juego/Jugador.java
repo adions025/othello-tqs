@@ -15,8 +15,8 @@ public class Jugador {
 	}
 
 	public Boolean ponerPieza(int fila, int columna) {
-		if((Juego.getTablero().getTablero()[fila][columna] == null) || 
-				(fila < 0 || fila > 7) || (columna < 0 || columna > 7)) {
+		if((Juego.getTablero().getTablero()[fila][columna] == null) && 
+				(fila < 0 || fila > 7) && (columna < 0 || columna > 7)) {
 			Juego.getTablero().getTablero()[fila][columna] = new Pieza(this.color);
 			return true;
 		} else {
