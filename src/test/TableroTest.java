@@ -79,14 +79,52 @@ class TableroTest {
 	void testColocarPiezaTablero() {
 		Tablero tablero = new Tablero();
 		
-		tablero.colocarPieza(0, 0, Color.Blanca);
-		assertEquals(tablero.getTablero()[0][0].getColor(), Color.Blanca);
+		//
+		assertTrue(tablero.colocarPieza(0, 0, Color.Blanca));
+		assertFalse(tablero.colocarPieza(0, 0, Color.Negra));
 		
-		//Se debería asegurar que no se puede colocar otra pieza en la misma
-		//posicion
-		tablero.colocarPieza(0, 0, Color.Negra);
-		assertEquals(tablero.getTablero()[0][0].getColor(), Color.Blanca);
+		assertTrue(tablero.colocarPieza(0, 7, Color.Blanca));
+		assertFalse(tablero.colocarPieza(0, 7, Color.Negra));
 		
+		assertTrue(tablero.colocarPieza(7, 0, Color.Negra));
+		assertFalse(tablero.colocarPieza(7, 0, Color.Blanca));
+		
+		assertTrue(tablero.colocarPieza(7, 7, Color.Blanca));
+		assertFalse(tablero.colocarPieza(7, 7, Color.Negra));
+		
+		//
+		assertTrue(tablero.colocarPieza(0, 5, Color.Blanca));
+		assertFalse(tablero.colocarPieza(0, 5, Color.Negra));
+		
+		assertTrue(tablero.colocarPieza(5, 0, Color.Negra));
+		assertFalse(tablero.colocarPieza(5, 0, Color.Blanca));
+
+		assertTrue(tablero.colocarPieza(7, 5, Color.Negra));
+		assertFalse(tablero.colocarPieza(7, 5, Color.Blanca));
+	
+		assertTrue(tablero.colocarPieza(5, 7, Color.Blanca));
+		assertFalse(tablero.colocarPieza(5, 7, Color.Negra));		
+		
+	}
+	
+	@Test
+	void testColocarPiezaTableroFueradePosicion() {
+		Tablero tablero = new Tablero();
+		System.out.println(tablero);
+		//
+		assertFalse(tablero.colocarPieza(-1, 0, Color.Blanca));
+		
+		assertFalse(tablero.colocarPieza(0, -1, Color.Blanca));
+		assertFalse(tablero.colocarPieza(-1, -1, Color.Blanca));
+		assertFalse(tablero.colocarPieza(-1, 7, Color.Blanca));
+		assertFalse(tablero.colocarPieza(0, 8, Color.Blanca));
+		assertFalse(tablero.colocarPieza(-1, 8, Color.Blanca));
+		assertFalse(tablero.colocarPieza(8, 0, Color.Blanca));
+		assertFalse(tablero.colocarPieza(7, -1, Color.Blanca));
+		assertFalse(tablero.colocarPieza(8, -1, Color.Blanca));
+		assertFalse(tablero.colocarPieza(7, 8, Color.Blanca));
+		assertFalse(tablero.colocarPieza(8, 7, Color.Blanca));
+		assertFalse(tablero.colocarPieza(8, 8, Color.Blanca));
 		
 		
 	}
