@@ -78,7 +78,10 @@ class TableroTest {
 	@Test
 	void testColocarPiezaTablero() {
 		Tablero tablero = new Tablero();
+		
 		tablero.colocarPieza(0, 0, Color.Blanca);
+		assertEquals(tablero.getTablero()[0][0].getColor(), Color.Blanca);
+		
 		
 		
 		
