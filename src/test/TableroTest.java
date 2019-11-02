@@ -82,6 +82,10 @@ class TableroTest {
 		tablero.colocarPieza(0, 0, Color.Blanca);
 		assertEquals(tablero.getTablero()[0][0].getColor(), Color.Blanca);
 		
+		//Se debería asegurar que no se puede colocar otra pieza en la misma
+		//posicion
+		tablero.colocarPieza(0, 0, Color.Negra);
+		assertEquals(tablero.getTablero()[0][0].getColor(), Color.Blanca);
 		
 		
 		
