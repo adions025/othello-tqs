@@ -23,8 +23,8 @@ public class Tablero {
 				} 
 				else {
 					switch (this.tablero[i][j].getColor()) {
-					case Negra: frame += " N"; break;
-					case Blanca: frame += " B"; break;	
+					case Negra: frame += "  N"; break;
+					case Blanca: frame += "  B"; break;	
 					default:
 						frame += "?";
 					}
@@ -44,7 +44,6 @@ public class Tablero {
 	
 	
 	public boolean colocarPieza(int fila, int columna, Color color) {
-		
 		boolean colocarflag;
 		
 		if (fila <0 || fila>7 || columna<0 || columna>7) {
@@ -61,6 +60,33 @@ public class Tablero {
 		}
 	
 		return colocarflag;
+	}
+	
+	
+	private boolean piezaJuntoApieza(int fila, int columna) {
+		boolean piezasJuntas = false;
+		
+		if (fila-1 >= 0 && tablero[fila-1][columna] != null) {
+			piezasJuntas = true;
+		}
+		
+		if (fila+1 <= 7 && tablero[fila+1][columna] != null) {
+			piezasJuntas = true;
+		}
+		
+		if (columna-1 >= 0 && tablero[fila][columna-1] != null) {
+			piezasJuntas = true;
+		}
+		
+		if (columna+1 <= 7 && tablero[fila][columna+1] != null) {
+			piezasJuntas = true;
+		}
+		
+		return piezasJuntas;
+	}
+	
+	public boolean wrapperPiezaJuntoApieza(int fila, int columna) {
+		return piezaJuntoApieza(fila, columna);
 	}
 	
 		
