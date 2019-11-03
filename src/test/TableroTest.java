@@ -117,27 +117,54 @@ class TableroTest {
 		//debe dejar colocar pieza solo si hay una pieza contraria alado
 		Tablero tablero = new Tablero();
 		System.out.println(tablero);
-		//posiciones que no debería dejar colocar pieza
-		//el tablero esta inicializado en el centro 4 piezas B,N N,B
-		
-		assertFalse(tablero.colocarPieza(0, 0, Color.Blanca));
-		assertFalse(tablero.colocarPieza(0, 7, Color.Negra));
-		assertFalse(tablero.colocarPieza(7, 0, Color.Negra));
-		assertFalse(tablero.colocarPieza(7, 7, Color.Negra));
 
-		assertFalse(tablero.colocarPieza(0, 5, Color.Blanca));
-		assertFalse(tablero.colocarPieza(5, 0, Color.Blanca));
-		assertFalse(tablero.colocarPieza(7, 5, Color.Blanca));
-		assertFalse(tablero.colocarPieza(5, 7, Color.Negra));	
-		
-
-		//posiciones que deberia que debería dejar colocar piezas
+		//posiciones que deberia dejar colocar piezas
 		//pieza negra
-		assertTrue(tablero.colocarPieza(2, 3, Color.Negra));
-		assertTrue(tablero.colocarPieza(3, 2, Color.Negra));
-		assertTrue(tablero.colocarPieza(4, 5, Color.Negra));
-		assertTrue(tablero.colocarPieza(5, 4, Color.Negra));
+		assertTrue(tablero.wrapperPiezaJuntoApieza(2, 3));
+		assertTrue(tablero.wrapperPiezaJuntoApieza(3, 2));
+		assertTrue(tablero.wrapperPiezaJuntoApieza(4, 5));
+		assertTrue(tablero.wrapperPiezaJuntoApieza(5, 4));
 		
+		//posiciones limites con el tablero
+		//
+		assertFalse(tablero.wrapperPiezaJuntoApieza(0, 0));
+		assertFalse(tablero.wrapperPiezaJuntoApieza(0, 1));
+		assertFalse(tablero.wrapperPiezaJuntoApieza(0, 2));
+		assertFalse(tablero.wrapperPiezaJuntoApieza(0, 3));
+		assertFalse(tablero.wrapperPiezaJuntoApieza(0, 4));
+		assertFalse(tablero.wrapperPiezaJuntoApieza(0, 5));
+		assertFalse(tablero.wrapperPiezaJuntoApieza(0, 6));
+		assertFalse(tablero.wrapperPiezaJuntoApieza(0, 7));
+		
+		//
+		assertFalse(tablero.wrapperPiezaJuntoApieza(0, 0));
+		assertFalse(tablero.wrapperPiezaJuntoApieza(1, 0));
+		assertFalse(tablero.wrapperPiezaJuntoApieza(2, 0));
+		assertFalse(tablero.wrapperPiezaJuntoApieza(3, 0));
+		assertFalse(tablero.wrapperPiezaJuntoApieza(4, 0));
+		assertFalse(tablero.wrapperPiezaJuntoApieza(5, 0));
+		assertFalse(tablero.wrapperPiezaJuntoApieza(6, 0));
+		assertFalse(tablero.wrapperPiezaJuntoApieza(7, 0));
+		
+		//
+		assertFalse(tablero.wrapperPiezaJuntoApieza(0, 7));
+		assertFalse(tablero.wrapperPiezaJuntoApieza(1, 7));
+		assertFalse(tablero.wrapperPiezaJuntoApieza(2, 7));
+		assertFalse(tablero.wrapperPiezaJuntoApieza(3, 7));
+		assertFalse(tablero.wrapperPiezaJuntoApieza(4, 7));
+		assertFalse(tablero.wrapperPiezaJuntoApieza(5, 7));
+		assertFalse(tablero.wrapperPiezaJuntoApieza(6, 7));
+		assertFalse(tablero.wrapperPiezaJuntoApieza(7, 7));
+		
+		//
+		assertFalse(tablero.wrapperPiezaJuntoApieza(7, 0));
+		assertFalse(tablero.wrapperPiezaJuntoApieza(7, 1));
+		assertFalse(tablero.wrapperPiezaJuntoApieza(7, 2));
+		assertFalse(tablero.wrapperPiezaJuntoApieza(7, 3));
+		assertFalse(tablero.wrapperPiezaJuntoApieza(7, 4));
+		assertFalse(tablero.wrapperPiezaJuntoApieza(7, 5));
+		assertFalse(tablero.wrapperPiezaJuntoApieza(7, 6));
+		assertFalse(tablero.wrapperPiezaJuntoApieza(7, 7));
 		
 	}
 
