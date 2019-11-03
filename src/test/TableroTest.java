@@ -112,7 +112,7 @@ class TableroTest {
 			
 	}
 	
-	@Test
+	//@Test
 	void testColocarPiezasAlado() {
 		//debe dejar colocar pieza solo si hay una pieza contraria alado
 		Tablero tablero = new Tablero();
@@ -165,7 +165,49 @@ class TableroTest {
 		assertFalse(tablero.wrapperPiezaJuntoApieza(7, 5));
 		assertFalse(tablero.wrapperPiezaJuntoApieza(7, 6));
 		assertFalse(tablero.wrapperPiezaJuntoApieza(7, 7));
-		
+
 	}
 
+		@Test
+		void testColocarPiezasDiferenteColor(){
+		/*
+			   	  1  2  3  4  5  6  7  8
+			   1  -  -  -  -  -  -  -  -
+			   2  -  -  -  -  -  -  -  -
+			   3  -  -  -  -  -  -  -  -
+			   4  -  - [B] B  N  -  -  -
+			   5  -  -  -  N  B  -  -  -
+			   6  -  -  -  -  -  -  -  -
+			   7  -  -  -  -  -  -  -  -
+			   8  -  -  -  -  -  -  -  -
+		
+		 * se deberia asegurar que la pieza que se coloca sea de 
+		 * color contrario en algun sentid, de esta manera poder
+		 * girar la pieza intermedio, en el ejemplo mostrado es
+		 * incorrecta la pieza [B]lanca. 
+		 */
+			
+		Tablero tablero = new Tablero();
+	
+		//
+		assertFalse(tablero.colocarPieza(2, 3, Color.Blanca));
+		assertFalse(tablero.colocarPieza(2, 2, Color.Blanca));
+		assertFalse(tablero.colocarPieza(3, 2, Color.Blanca));
+		
+		assertFalse(tablero.colocarPieza(4, 5, Color.Blanca));
+		assertFalse(tablero.colocarPieza(5, 5, Color.Blanca));
+		assertFalse(tablero.colocarPieza(5, 4, Color.Blanca));
+		
+
+		
+		//
+		assertFalse(tablero.colocarPieza(4, 2, Color.Negra));
+		assertFalse(tablero.colocarPieza(5, 2, Color.Negra));
+		assertFalse(tablero.colocarPieza(5, 3, Color.Negra));
+		
+		assertFalse(tablero.colocarPieza(2, 4, Color.Negra));
+		assertFalse(tablero.colocarPieza(2, 5, Color.Negra));
+		assertFalse(tablero.colocarPieza(3, 5, Color.Negra));
+		
+		}
 }
