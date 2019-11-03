@@ -54,6 +54,11 @@ public class Tablero {
 			colocarflag = false;	
 		}
 		
+		else if ((piezaJuntoApieza(fila, columna) == false)) {
+			System.out.println("No se puede colocar una pieza no junta");
+			colocarflag = false;
+		}
+		
 		else {
 			colocarflag = true;
 			this.tablero[fila][columna] = new Pieza(color);
