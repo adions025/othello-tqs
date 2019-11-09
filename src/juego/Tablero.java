@@ -94,5 +94,47 @@ public class Tablero {
 		return piezaJuntoApieza(fila, columna);
 	}
 	
+	
+	private boolean checkColocarPieza(int fila, int columna, Color color) {	
+		boolean blnFlag = true;
+		boolean piezaJuntas = piezaJuntoApieza(fila, columna);
+		
+		if(piezaJuntas == true) {
+			
+			if(this.tablero[fila-1][columna] != null) {
+				if(this.tablero[fila-1][columna].getColor() == color)  {
+					blnFlag = false;
+				}
+			}
+				
+		    if(this.tablero[fila+1][columna] != null) {
+				if(this.tablero[fila+1][columna].getColor() == color)  {
+					blnFlag = false;
+				}
+		    }
+			
+		    if(this.tablero[fila][columna-1] != null) {
+				if(this.tablero[fila][columna-1].getColor() == color)  {
+					blnFlag = false;
+				}
+		    }
+		    if(this.tablero[fila][columna+1] != null) {
+				if(this.tablero[fila][columna+1].getColor() == color)  {
+					blnFlag = false;
+				}
+
+			}	
+			
+		}
+
+		return blnFlag;
+	}
+	
+	public boolean wrapperCheckColocarPieza(int fila, int columna, Color color){
+		return checkColocarPieza(fila, columna, color);
+	}
+	
+	
+	
 		
 }

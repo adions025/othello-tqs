@@ -168,8 +168,8 @@ class TableroTest {
 
 	}
 
-		@Test
-		void testColocarPiezasDiferenteColor(){
+	@Test
+	void testColocarPiezasDiferenteColor(){
 		/*
 			   	  1  2  3  4  5  6  7  8
 			   1  -  -  -  -  -  -  -  -
@@ -181,33 +181,33 @@ class TableroTest {
 			   7  -  -  -  -  -  -  -  -
 			   8  -  -  -  -  -  -  -  -
 		
-		 * se deberia asegurar que la pieza que se coloca sea de 
+		 * se deberia asegurar que la pieza que se coloca sea de
 		 * color contrario en algun sentid, de esta manera poder
 		 * girar la pieza intermedio, en el ejemplo mostrado es
 		 * incorrecta la pieza [B]lanca. 
 		 */
 			
 		Tablero tablero = new Tablero();
-	
-		//
-		assertFalse(tablero.colocarPieza(2, 3, Color.Blanca));
-		assertFalse(tablero.colocarPieza(2, 2, Color.Blanca));
-		assertFalse(tablero.colocarPieza(3, 2, Color.Blanca));
 		
-		assertFalse(tablero.colocarPieza(4, 5, Color.Blanca));
-		assertFalse(tablero.colocarPieza(5, 5, Color.Blanca));
-		assertFalse(tablero.colocarPieza(5, 4, Color.Blanca));
+		//
+		assertFalse(tablero.wrapperCheckColocarPieza(2, 3, Color.Blanca));
+		//assertFalse(tablero.wrapperCheckColocarPieza(2, 2, Color.Blanca));
+		assertFalse(tablero.wrapperCheckColocarPieza(3, 2, Color.Blanca));
+		
+		assertFalse(tablero.wrapperCheckColocarPieza(4, 5, Color.Blanca));
+		//assertFalse(tablero.wrapperCheckColocarPieza(5, 5, Color.Blanca));
+		assertFalse(tablero.wrapperCheckColocarPieza(5, 4, Color.Blanca));
 		
 
 		
 		//
-		assertFalse(tablero.colocarPieza(4, 2, Color.Negra));
-		assertFalse(tablero.colocarPieza(5, 2, Color.Negra));
-		assertFalse(tablero.colocarPieza(5, 3, Color.Negra));
+		assertFalse(tablero.wrapperCheckColocarPieza(4, 2, Color.Negra));
+		//assertFalse(tablero.wrapperCheckColocarPieza(5, 2, Color.Negra));
+		assertFalse(tablero.wrapperCheckColocarPieza(5, 3, Color.Negra));
 		
-		assertFalse(tablero.colocarPieza(2, 4, Color.Negra));
-		assertFalse(tablero.colocarPieza(2, 5, Color.Negra));
-		assertFalse(tablero.colocarPieza(3, 5, Color.Negra));
+		assertFalse(tablero.wrapperCheckColocarPieza(2, 4, Color.Negra));
+		//assertFalse(tablero.wrapperCheckColocarPieza(2, 5, Color.Negra));
+		assertFalse(tablero.wrapperCheckColocarPieza(3, 5, Color.Negra));
 		
 		}
 }
