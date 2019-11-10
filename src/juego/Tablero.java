@@ -139,6 +139,26 @@ public class Tablero {
 					blnFlag = false;
 				}
 
+			}
+		    if(this.tablero[fila+1][columna+1] != null) {
+				if(this.tablero[fila+1][columna+1].getColor() == color)  {
+					blnFlag = false;
+				}
+			}
+		    if(this.tablero[fila-1][columna-1] != null) {
+				if(this.tablero[fila-1][columna-1].getColor() == color)  {
+					blnFlag = false;
+				}
+			}
+		    if(this.tablero[fila+1][columna-1] != null) {
+				if(this.tablero[fila+1][columna-1].getColor() == color)  {
+					blnFlag = false;
+				}
+			}
+		    if(this.tablero[fila-1][columna+1] != null) {
+				if(this.tablero[fila-1][columna+1].getColor() == color)  {
+					blnFlag = false;
+				}
 			}	
 			
 		}
