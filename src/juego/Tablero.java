@@ -138,29 +138,7 @@ public class Tablero {
 				if(this.tablero[fila][columna+1].getColor() == color)  {
 					blnFlag = false;
 				}
-
 			}
-		    if(this.tablero[fila+1][columna+1] != null) {
-				if(this.tablero[fila+1][columna+1].getColor() == color)  {
-					blnFlag = false;
-				}
-			}
-		    if(this.tablero[fila-1][columna-1] != null) {
-				if(this.tablero[fila-1][columna-1].getColor() == color)  {
-					blnFlag = false;
-				}
-			}
-		    if(this.tablero[fila+1][columna-1] != null) {
-				if(this.tablero[fila+1][columna-1].getColor() == color)  {
-					blnFlag = false;
-				}
-			}
-		    if(this.tablero[fila-1][columna+1] != null) {
-				if(this.tablero[fila-1][columna+1].getColor() == color)  {
-					blnFlag = false;
-				}
-			}	
-			
 		}
 
 		return blnFlag;

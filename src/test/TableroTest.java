@@ -190,27 +190,38 @@ class TableroTest {
 		 * incorrecta la pieza [B]lanca. 
 		 */
 			
-		Tablero tablero = new Tablero();
+Tablero tablero = new Tablero();
 		
 		//
 		assertFalse(tablero.wrapperCheckColocarPieza(2, 3, Color.Blanca));
-		assertFalse(tablero.wrapperCheckColocarPieza(2, 2, Color.Blanca));
+		//assertFalse(tablero.wrapperCheckColocarPieza(2, 2, Color.Blanca));
 		assertFalse(tablero.wrapperCheckColocarPieza(3, 2, Color.Blanca));
 		
 		assertFalse(tablero.wrapperCheckColocarPieza(4, 5, Color.Blanca));
-		assertFalse(tablero.wrapperCheckColocarPieza(5, 5, Color.Blanca));
+		//assertFalse(tablero.wrapperCheckColocarPieza(5, 5, Color.Blanca));
 		assertFalse(tablero.wrapperCheckColocarPieza(5, 4, Color.Blanca));
-		
-
 		
 		//
 		assertFalse(tablero.wrapperCheckColocarPieza(4, 2, Color.Negra));
-		assertFalse(tablero.wrapperCheckColocarPieza(5, 2, Color.Negra));
+		//assertFalse(tablero.wrapperCheckColocarPieza(5, 2, Color.Negra));
 		assertFalse(tablero.wrapperCheckColocarPieza(5, 3, Color.Negra));
 		
 		assertFalse(tablero.wrapperCheckColocarPieza(2, 4, Color.Negra));
-		assertFalse(tablero.wrapperCheckColocarPieza(2, 5, Color.Negra));
+		//assertFalse(tablero.wrapperCheckColocarPieza(2, 5, Color.Negra));
 		assertFalse(tablero.wrapperCheckColocarPieza(3, 5, Color.Negra));
+		
+		
+		//
+		assertTrue(tablero.wrapperCheckColocarPieza(2, 3, Color.Negra));
+		assertTrue(tablero.wrapperCheckColocarPieza(3, 2, Color.Negra));
+		assertTrue(tablero.wrapperCheckColocarPieza(4, 5, Color.Negra));
+		assertTrue(tablero.wrapperCheckColocarPieza(5, 4, Color.Negra));
+		
+		//
+		assertTrue(tablero.wrapperCheckColocarPieza(4, 2, Color.Blanca));
+		assertTrue(tablero.wrapperCheckColocarPieza(5, 3, Color.Blanca));
+		assertTrue(tablero.wrapperCheckColocarPieza(2, 4, Color.Blanca));
+		assertTrue(tablero.wrapperCheckColocarPieza(3, 5, Color.Blanca));
 		
 		}
 }
