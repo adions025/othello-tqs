@@ -11,7 +11,7 @@ import juego.Color;
 class TableroTest {
 
 
-	//@Test
+	@Test
 	void testConstructorTablero() {
 	
 		Tablero tablero = new Tablero();
@@ -32,7 +32,7 @@ class TableroTest {
 	}
 	
 	
-	//@Test
+	@Test
 	void testColocarPiezaTablero() {
 		
 		Tablero tablero = new Tablero();
@@ -78,7 +78,7 @@ class TableroTest {
 		
 	}
 	
-	//@Test
+	@Test
 	void testColocarPiezaTableroFueradePosicion() {
 		
 		Tablero tablero = new Tablero();
@@ -190,33 +190,33 @@ class TableroTest {
 		 * incorrecta la pieza [B]lanca. 
 		 */
 			
-Tablero tablero = new Tablero();
-		
+		Tablero tablero = new Tablero();
+		//assertFalse(tablero.wrapperCheckColocarPieza(2, 2, Color.Negra));
 		//
 		assertFalse(tablero.wrapperCheckColocarPieza(2, 3, Color.Blanca));
-		//assertFalse(tablero.wrapperCheckColocarPieza(2, 2, Color.Blanca));
+		assertFalse(tablero.wrapperCheckColocarPieza(2, 2, Color.Blanca));
 		assertFalse(tablero.wrapperCheckColocarPieza(3, 2, Color.Blanca));
 		
 		assertFalse(tablero.wrapperCheckColocarPieza(4, 5, Color.Blanca));
-		//assertFalse(tablero.wrapperCheckColocarPieza(5, 5, Color.Blanca));
+		assertFalse(tablero.wrapperCheckColocarPieza(5, 5, Color.Blanca));
 		assertFalse(tablero.wrapperCheckColocarPieza(5, 4, Color.Blanca));
 		
 		//
 		assertFalse(tablero.wrapperCheckColocarPieza(4, 2, Color.Negra));
-		//assertFalse(tablero.wrapperCheckColocarPieza(5, 2, Color.Negra));
+		assertFalse(tablero.wrapperCheckColocarPieza(5, 2, Color.Negra));
 		assertFalse(tablero.wrapperCheckColocarPieza(5, 3, Color.Negra));
 		
 		assertFalse(tablero.wrapperCheckColocarPieza(2, 4, Color.Negra));
-		//assertFalse(tablero.wrapperCheckColocarPieza(2, 5, Color.Negra));
+		assertFalse(tablero.wrapperCheckColocarPieza(2, 5, Color.Negra));
 		assertFalse(tablero.wrapperCheckColocarPieza(3, 5, Color.Negra));
 		
-		
+
 		//
 		assertTrue(tablero.wrapperCheckColocarPieza(2, 3, Color.Negra));
 		assertTrue(tablero.wrapperCheckColocarPieza(3, 2, Color.Negra));
 		assertTrue(tablero.wrapperCheckColocarPieza(4, 5, Color.Negra));
 		assertTrue(tablero.wrapperCheckColocarPieza(5, 4, Color.Negra));
-		
+	
 		//
 		assertTrue(tablero.wrapperCheckColocarPieza(4, 2, Color.Blanca));
 		assertTrue(tablero.wrapperCheckColocarPieza(5, 3, Color.Blanca));
@@ -224,4 +224,40 @@ Tablero tablero = new Tablero();
 		assertTrue(tablero.wrapperCheckColocarPieza(3, 5, Color.Blanca));
 		
 		}
+	
+	
+	@Test
+	void testCheckLimites() {
+		
+		Tablero tablero = new Tablero();
+		
+		//
+		assertFalse(tablero.wrappercheckLimites(0, -1));
+		assertFalse(tablero.wrappercheckLimites(-1, -1));
+		assertFalse(tablero.wrappercheckLimites(-1, 7));
+		assertFalse(tablero.wrappercheckLimites(0, 8));
+		assertFalse(tablero.wrappercheckLimites(-1, 8));
+		assertFalse(tablero.wrappercheckLimites(8, 0));
+		assertFalse(tablero.wrappercheckLimites(7, -1));
+		assertFalse(tablero.wrappercheckLimites(8, -1));
+		assertFalse(tablero.wrappercheckLimites(7, 8));
+		assertFalse(tablero.wrappercheckLimites(8, 7));
+		assertFalse(tablero.wrappercheckLimites(8, 8));	
+		
+		
+		assertFalse(tablero.wrappercheckLimites(-5, 0));
+		assertFalse(tablero.wrappercheckLimites(0, -3));
+		assertFalse(tablero.wrappercheckLimites(-2, -4));
+		assertFalse(tablero.wrappercheckLimites(-5, 7));
+		assertFalse(tablero.wrappercheckLimites(-0, 11));
+		assertFalse(tablero.wrappercheckLimites(-4, 9));
+		assertFalse(tablero.wrappercheckLimites(9, 0));
+		assertFalse(tablero.wrappercheckLimites(7, -2));
+		assertFalse(tablero.wrappercheckLimites(10, -3));
+		assertFalse(tablero.wrappercheckLimites(7, 10));
+		assertFalse(tablero.wrappercheckLimites(9, 7));
+		assertFalse(tablero.wrappercheckLimites(11, 13));
+			
+	}
+	
 }
