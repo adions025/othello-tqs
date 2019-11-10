@@ -54,8 +54,7 @@ public class Tablero {
 			colocarflag = false;	
 		}
 		
-		else if ((piezaJuntoApieza(fila, columna) == false)) {
-			System.out.println("No se puede colocar una pieza no junta");
+		else if ((checkColocarPieza(fila, columna, color) == false)) {
 			colocarflag = false;
 		}
 		
@@ -112,32 +111,86 @@ public class Tablero {
 	
 	
 	private boolean checkColocarPieza(int fila, int columna, Color color) {	
-		boolean blnFlag = true;
+		boolean blnFlag = false;
 		boolean piezaJuntas = piezaJuntoApieza(fila, columna);
 		
 		if(piezaJuntas == true) {
 			
 			if(this.tablero[fila-1][columna] != null) {
-				if(this.tablero[fila-1][columna].getColor() == color)  {
-					blnFlag = false;
+				if(this.tablero[fila-1][columna].getColor() != color)  {
+					blnFlag = true;
 				}
 			}
 				
 		    if(this.tablero[fila+1][columna] != null) {
-				if(this.tablero[fila+1][columna].getColor() == color)  {
-					blnFlag = false;
+				if(this.tablero[fila+1][columna].getColor() != color)  {
+					blnFlag = true;
 				}
 		    }
 			
 		    if(this.tablero[fila][columna-1] != null) {
-				if(this.tablero[fila][columna-1].getColor() == color)  {
-					blnFlag = false;
+				if(this.tablero[fila][columna-1].getColor() != color)  {
+					blnFlag = true;
 				}
 		    }
 		    if(this.tablero[fila][columna+1] != null) {
-				if(this.tablero[fila][columna+1].getColor() == color)  {
-					blnFlag = false;
+				if(this.tablero[fila][columna+1].getColor() != color)  {
+					blnFlag = true;
 				}
+			}
+		    
+		    if(this.tablero[fila+1][columna+1] != null) {
+				if(this.tablero[fila+1][columna+1].getColor() != color)  {
+					blnFlag = true;
+				}
+			}
+		    if(this.tablero[fila-1][columna-1] != null) {
+				if(this.tablero[fila-1][columna-1].getColor() != color)  {
+					blnFlag = true;
+				}
+			}
+		    if(this.tablero[fila+1][columna-1] != null) {
+				if(this.tablero[fila+1][columna-1].getColor() != color)  {
+					blnFlag = true;
+				}
+			}
+		    if(this.tablero[fila-1][columna+1] != null) {
+				if(this.tablero[fila-1][columna+1].getColor() != color)  {
+					blnFlag = true;
+				}
+			}		    
+		}
+		
+		if (blnFlag) {
+			int casillas [] = new int[8];
+			casillas[0] = checkLines(fila-1, columna, color, 
+					Direccion.arriba);
+			casillas[1] = checkLines(fila+1, columna, color, 
+					Direccion.abajo);
+			casillas[2] = checkLines(fila, columna-1, color, 
+					Direccion.izquierda);
+			casillas[3] = checkLines(fila, columna+1, color, 
+					Direccion.derecha);
+			casillas[4] = checkLines(fila-1, columna-1, color, 
+					Direccion.arribaIzquierda);
+			casillas[5] = checkLines(fila-1, columna+1, color, 
+					Direccion.arribaDerecha);
+			casillas[6] = checkLines(fila+1, columna-1, color, 
+					Direccion.abajoIzquierda);
+			casillas[7] = checkLines(fila+1, columna+1, color, 
+					Direccion.abajoDerecha);
+			
+			int check = 0;
+			for (int casilla : casillas) {
+				if (casilla >0) {
+					check =+ casilla;
+				}
+			}
+			if (check <= 0) {
+				blnFlag = false;
+			}
+			else {
+				blnFlag = true;
 			}
 		}
 
@@ -148,6 +201,69 @@ public class Tablero {
 		return checkColocarPieza(fila, columna, color);
 	}
 	
+	
+	private int checkLines(int fila, int columna, Color color, Direccion dir) {
+		int row = 0;
+		int col = 0;
+		switch(dir) {
+		case arriba:
+			row = -1;
+			break;
+		case abajo:
+			row = 1;
+			break;
+		case izquierda:
+			col = -1;
+			break;
+		case derecha:
+			col = 1;
+			break;
+		case arribaIzquierda:
+			row = -1;
+			col = -1;
+			break;
+		case arribaDerecha:
+			row = -1;
+			col = +1;
+			break;
+		case abajoIzquierda:
+			row = +1;
+			col = -1;
+			break;
+		case abajoDerecha:
+			row = +1;
+			col = +1;
+			break;
+		}
+		
+		if (!checkLimites(fila, columna) || this.tablero[fila][columna] == null) {
+			System.out.println("RETURN -1: " + dir + ". RANGO. row:" + fila + 
+					" col:"+columna);
+			return -1;
+		}
+		
+		if (this.tablero[fila][columna].getColor() == color) {
+			return 0;
+		}
+		
+		int check = checkLines(fila + row, columna + col, color, dir);
+		
+		if (check<0) {
+			System.out.println("RETURN2 -1: " + dir + ". RANGO. row:" + fila + 
+					" col:"+columna);
+			return -1;
+		}
+			
+		return check+1;
+	}
+	
+	private boolean checkLimites(int fila, int columna) {
+		return fila >= 0 && fila <= 7 && columna >= 0 && columna <= 7;
+	}
+	
+	public boolean wrappercheckLimites(int fila, int columna) {
+		return checkLimites(fila, columna);
+	}
 	
 	
 		
