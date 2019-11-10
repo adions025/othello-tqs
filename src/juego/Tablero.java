@@ -87,6 +87,22 @@ public class Tablero {
 			piezasJuntas = true;
 		}
 		
+		if (fila+1 <= 7 &&columna+1 <= 7 && tablero[fila+1][columna+1] != null) {
+			piezasJuntas = true;
+		}
+		
+		if (fila-1 >= 0 &&columna-1 >= 0 && tablero[fila-1][columna-1] != null) {
+			piezasJuntas = true;
+		}
+		
+		if (fila+1 <=7 &&columna-1 >= 0 && tablero[fila+1][columna-1] != null) {
+			piezasJuntas = true;
+		}
+		
+		if (fila-1 >= 0 &&columna+1 <= 7 && tablero[fila-1][columna+1] != null) {
+			piezasJuntas = true;
+		}
+		
 		return piezasJuntas;
 	}
 	

@@ -112,7 +112,7 @@ class TableroTest {
 			
 	}
 	
-	//@Test
+	@Test
 	void testColocarPiezasAlado() {
 		//debe dejar colocar pieza solo si hay una pieza contraria alado
 		Tablero tablero = new Tablero();
@@ -124,6 +124,10 @@ class TableroTest {
 		assertTrue(tablero.wrapperPiezaJuntoApieza(3, 2));
 		assertTrue(tablero.wrapperPiezaJuntoApieza(4, 5));
 		assertTrue(tablero.wrapperPiezaJuntoApieza(5, 4));
+		
+		//las esquinas tambien se puede colocar 
+		assertTrue(tablero.wrapperPiezaJuntoApieza(2, 2));
+		assertTrue(tablero.wrapperPiezaJuntoApieza(5, 5));
 		
 		//posiciones limites con el tablero
 		//
@@ -137,7 +141,6 @@ class TableroTest {
 		assertFalse(tablero.wrapperPiezaJuntoApieza(0, 7));
 		
 		//
-		assertFalse(tablero.wrapperPiezaJuntoApieza(0, 0));
 		assertFalse(tablero.wrapperPiezaJuntoApieza(1, 0));
 		assertFalse(tablero.wrapperPiezaJuntoApieza(2, 0));
 		assertFalse(tablero.wrapperPiezaJuntoApieza(3, 0));
