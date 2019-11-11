@@ -232,10 +232,38 @@ class TableroTest {
 		Tablero tablero = new Tablero();
 		//
 		assertEquals(0, tablero.wrapperCheckLines(2, 3, Color.Blanca, Direccion.abajo));
+		assertEquals(-1, tablero.wrapperCheckLines(2, 3, Color.Blanca, Direccion.abajoIzquierda));
+		assertEquals(-1, tablero.wrapperCheckLines(2, 3, Color.Blanca, Direccion.izquierda));
+		assertEquals(-1, tablero.wrapperCheckLines(2, 3, Color.Blanca, Direccion.derecha));
+		assertEquals(-1, tablero.wrapperCheckLines(2, 3, Color.Blanca, Direccion.abajoDerecha));
+		
+		assertEquals(-1, tablero.wrapperCheckLines(2, 2, Color.Blanca, Direccion.abajo));
+		assertEquals(-1, tablero.wrapperCheckLines(2, 2, Color.Blanca, Direccion.abajoIzquierda));
+		assertEquals(-1, tablero.wrapperCheckLines(2, 2, Color.Blanca, Direccion.izquierda));
+		assertEquals(-1, tablero.wrapperCheckLines(2, 2, Color.Blanca, Direccion.derecha));
 		assertEquals(0, tablero.wrapperCheckLines(2, 2, Color.Blanca, Direccion.abajoDerecha));
 		
-		assertEquals(0, tablero.wrapperCheckLines(2, 5, Color.Negra, Direccion.abajoIzquierda));
+		assertEquals(-1, tablero.wrapperCheckLines(2, 5, Color.Blanca, Direccion.abajo));
+		assertEquals(-1, tablero.wrapperCheckLines(2, 5, Color.Blanca, Direccion.abajoIzquierda));
+		assertEquals(-1, tablero.wrapperCheckLines(2, 5, Color.Blanca, Direccion.izquierda));
+		assertEquals(-1, tablero.wrapperCheckLines(2, 5, Color.Blanca, Direccion.derecha));
+		assertEquals(-1, tablero.wrapperCheckLines(2, 5, Color.Blanca, Direccion.abajoDerecha));
+		
+		assertEquals(-1, tablero.wrapperCheckLines(2, 1, Color.Blanca, Direccion.abajo));
+		assertEquals(-1, tablero.wrapperCheckLines(2, 1, Color.Blanca, Direccion.abajoIzquierda));
+		assertEquals(-1, tablero.wrapperCheckLines(2, 1, Color.Blanca, Direccion.izquierda));
+		assertEquals(-1, tablero.wrapperCheckLines(2, 1, Color.Blanca, Direccion.derecha));
+		assertEquals(-1, tablero.wrapperCheckLines(2, 1, Color.Blanca, Direccion.abajoDerecha));
+		
+		assertEquals(-1, tablero.wrapperCheckLines(4, 2, Color.Blanca, Direccion.abajo));
+		assertEquals(-1, tablero.wrapperCheckLines(4, 2, Color.Blanca, Direccion.abajoIzquierda));
+		assertEquals(-1, tablero.wrapperCheckLines(4, 2, Color.Blanca, Direccion.izquierda));
+		assertEquals(1, tablero.wrapperCheckLines(4, 2, Color.Blanca, Direccion.derecha));
+		assertEquals(-1, tablero.wrapperCheckLines(4, 2, Color.Blanca, Direccion.abajoDerecha));
+		
 		assertEquals(0, tablero.wrapperCheckLines(5, 2, Color.Negra, Direccion.arribaDerecha));
+		
+		
 		
 		//
 		Tablero tableroTest = new Tablero(2);
