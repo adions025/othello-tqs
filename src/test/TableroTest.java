@@ -282,6 +282,17 @@ class TableroTest {
 		assertEquals(1, tableroTest.wrapperCheckLines(3, 3, Color.Blanca, Direccion.arribaIzquierda));
 		assertEquals(2, tableroTest.wrapperCheckLines(3, 3, Color.Blanca, Direccion.arribaDerecha));
 		
+		Tablero tableroTest2 = new Tablero(2);
+		System.out.println(tableroTest2);
+		
+		assertEquals(-1, tableroTest2.wrapperCheckLines(0, 0, Color.Negra, Direccion.arriba));
+		assertEquals(5, tableroTest2.wrapperCheckLines(0, 0, Color.Negra, Direccion.abajo));
+		assertEquals(-1, tableroTest2.wrapperCheckLines(0, 0, Color.Negra, Direccion.izquierda));
+		assertEquals(1, tableroTest2.wrapperCheckLines(0, 0, Color.Negra, Direccion.derecha));
+		assertEquals(6, tableroTest2.wrapperCheckLines(0, 0, Color.Negra, Direccion.abajoDerecha));
+		assertEquals(-1, tableroTest2.wrapperCheckLines(0, 0, Color.Negra, Direccion.abajoIzquierda));
+		assertEquals(-1, tableroTest2.wrapperCheckLines(0, 0, Color.Negra, Direccion.arribaIzquierda));
+		assertEquals(-1, tableroTest2.wrapperCheckLines(0, 0, Color.Negra, Direccion.arribaDerecha));
 	}
 	
 	
