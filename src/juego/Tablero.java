@@ -11,6 +11,67 @@ public class Tablero {
 		this.tablero[4][4] = new Pieza(Color.Blanca);
 	}
 	
+	public Tablero(int numTablero) {
+		
+		if (numTablero == 1) {
+			this.tablero = new Pieza[8][8];
+			this.tablero[0][3] = new Pieza(Color.Blanca);
+			this.tablero[1][3] = new Pieza(Color.Negra);
+			this.tablero[2][3] = new Pieza(Color.Negra);
+			//this.tablero[3][3] = new Pieza(Color.Negra);//objetivo
+			this.tablero[4][3] = new Pieza(Color.Negra);
+			this.tablero[5][3] = new Pieza(Color.Negra);
+			this.tablero[6][3] = new Pieza(Color.Negra);
+			this.tablero[7][3] = new Pieza(Color.Negra);
+			
+			this.tablero[3][4] = new Pieza(Color.Negra);
+			this.tablero[3][5] = new Pieza(Color.Negra);
+			this.tablero[3][6] = new Pieza(Color.Negra);
+			this.tablero[3][7] = new Pieza(Color.Negra);
+			
+			this.tablero[3][2] = new Pieza(Color.Negra);
+			this.tablero[3][1] = new Pieza(Color.Blanca);
+			
+			this.tablero[4][2] = new Pieza(Color.Negra);
+			this.tablero[5][1] = new Pieza(Color.Negra);
+			this.tablero[6][0] = new Pieza(Color.Blanca);
+			
+			this.tablero[4][4] = new Pieza(Color.Negra);
+			this.tablero[5][5] = new Pieza(Color.Negra);
+			this.tablero[6][6] = new Pieza(Color.Negra);
+			this.tablero[7][7] = new Pieza(Color.Blanca);
+			
+			this.tablero[2][2] = new Pieza(Color.Negra);
+			this.tablero[1][1] = new Pieza(Color.Blanca);
+			
+			this.tablero[2][4] = new Pieza(Color.Negra);
+			this.tablero[1][5] = new Pieza(Color.Negra);
+			this.tablero[0][6] = new Pieza(Color.Blanca);
+		}
+		
+		if (numTablero == 2) {
+			this.tablero = new Pieza[8][8];
+			this.tablero[0][1] = new Pieza(Color.Blanca);
+			this.tablero[0][2] = new Pieza(Color.Negra);
+			
+			this.tablero[1][0] = new Pieza(Color.Blanca);
+			this.tablero[2][0] = new Pieza(Color.Blanca);
+			this.tablero[3][0] = new Pieza(Color.Blanca);
+			this.tablero[4][0] = new Pieza(Color.Blanca);
+			this.tablero[5][0] = new Pieza(Color.Blanca);
+			this.tablero[6][0] = new Pieza(Color.Negra);
+			
+			this.tablero[1][1] = new Pieza(Color.Blanca);
+			this.tablero[2][2] = new Pieza(Color.Blanca);
+			this.tablero[3][3] = new Pieza(Color.Blanca);
+			this.tablero[4][4] = new Pieza(Color.Blanca);
+			this.tablero[5][5] = new Pieza(Color.Blanca);
+			this.tablero[6][6] = new Pieza(Color.Blanca);
+			this.tablero[7][7] = new Pieza(Color.Negra);
+		}
+
+	}
+		
 
 	public String toString() 
 	{
@@ -236,25 +297,32 @@ public class Tablero {
 			break;
 		}
 		
-		if (!checkLimites(fila, columna) || this.tablero[fila][columna] == null) {
+		if (!checkLimites(fila+row, columna+col) || this.tablero[fila+row][columna+col] == null) {
 			System.out.println("RETURN -1: " + dir + ". RANGO. row:" + fila + 
 					" col:"+columna);
 			return -1;
 		}
 		
-		if (this.tablero[fila][columna].getColor() == color) {
+		if (this.tablero[fila+row][columna+col].getColor() == color) {
 			return 0;
 		}
 		
 		int check = checkLines(fila + row, columna + col, color, dir);
-		
+		System.out.println("hereAAA" +check);
 		if (check<0) {
 			System.out.println("RETURN2 -1: " + dir + ". RANGO. row:" + fila + 
 					" col:"+columna);
 			return -1;
 		}
-			
+		System.out.println("here" +check);
 		return check+1;
+		
+	}
+	
+	public int wrapperCheckLines(int fila, int columna, Color color, Direccion 
+			dir) {
+		return checkLines(fila, columna, color, dir);
+		
 	}
 	
 	private boolean checkLimites(int fila, int columna) {
