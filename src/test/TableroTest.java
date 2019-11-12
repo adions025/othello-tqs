@@ -266,12 +266,21 @@ class TableroTest {
 		
 		
 		//
-		Tablero tableroTest = new Tablero(2);
+		Tablero tableroTest = new Tablero(1);
 		System.out.println(tableroTest);
 		//assertEquals(-1, tableroTest.wrapperCheckLines(2, 3, Color.Blanca, Direccion.abajo));
 		
-		assertEquals(1, tableroTest.wrapperCheckLines(2, 2, Color.Blanca, Direccion.abajoDerecha));
-		assertEquals(-1, tableroTest.wrapperCheckLines(2, 2, Color.Blanca, Direccion.derecha));
+		//assertEquals(1, tableroTest.wrapperCheckLines(2, 2, Color.Blanca, Direccion.abajoDerecha));
+		//assertEquals(-1, tableroTest.wrapperCheckLines(2, 2, Color.Blanca, Direccion.derecha));
+		
+		assertEquals(2, tableroTest.wrapperCheckLines(3, 3, Color.Blanca, Direccion.arriba));
+		assertEquals(-1, tableroTest.wrapperCheckLines(3, 3, Color.Blanca, Direccion.abajo));
+		assertEquals(1, tableroTest.wrapperCheckLines(3, 3, Color.Blanca, Direccion.izquierda));
+		assertEquals(-1, tableroTest.wrapperCheckLines(3, 3, Color.Blanca, Direccion.derecha));
+		assertEquals(2, tableroTest.wrapperCheckLines(3, 3, Color.Blanca, Direccion.abajoIzquierda));
+		assertEquals(3, tableroTest.wrapperCheckLines(3, 3, Color.Blanca, Direccion.abajoDerecha));
+		assertEquals(1, tableroTest.wrapperCheckLines(3, 3, Color.Blanca, Direccion.arribaIzquierda));
+		assertEquals(2, tableroTest.wrapperCheckLines(3, 3, Color.Blanca, Direccion.arribaDerecha));
 		
 	}
 	
