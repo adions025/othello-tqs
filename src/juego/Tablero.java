@@ -18,7 +18,7 @@ public class Tablero {
 			this.tablero[0][3] = new Pieza(Color.Blanca);
 			this.tablero[1][3] = new Pieza(Color.Negra);
 			this.tablero[2][3] = new Pieza(Color.Negra);
-			//this.tablero[3][3] = new Pieza(Color.Negra);//objetivo
+			//this.tablero[3][3] = new Pieza(Color.Blanca);//objetivo
 			this.tablero[4][3] = new Pieza(Color.Negra);
 			this.tablero[5][3] = new Pieza(Color.Negra);
 			this.tablero[6][3] = new Pieza(Color.Negra);
@@ -69,6 +69,43 @@ public class Tablero {
 			this.tablero[6][6] = new Pieza(Color.Blanca);
 			this.tablero[7][7] = new Pieza(Color.Negra);
 		}
+		if (numTablero == 3) {
+			this.tablero = new Pieza[8][8];
+			this.tablero[0][3] = new Pieza(Color.Blanca);
+			this.tablero[1][3] = new Pieza(Color.Blanca);
+			
+			this.tablero[2][3] = new Pieza(Color.Blanca);
+			this.tablero[3][3] = new Pieza(Color.Blanca);//objetivo
+			
+			this.tablero[4][3] = new Pieza(Color.Negra);
+			this.tablero[5][3] = new Pieza(Color.Negra);
+			this.tablero[6][3] = new Pieza(Color.Negra);
+			this.tablero[7][3] = new Pieza(Color.Negra);
+			
+			this.tablero[3][4] = new Pieza(Color.Negra);
+			this.tablero[3][5] = new Pieza(Color.Negra);
+			this.tablero[3][6] = new Pieza(Color.Negra);
+			this.tablero[3][7] = new Pieza(Color.Negra);
+			
+			this.tablero[3][2] = new Pieza(Color.Blanca);
+			this.tablero[3][1] = new Pieza(Color.Blanca);
+			
+			this.tablero[4][2] = new Pieza(Color.Blanca);
+			this.tablero[5][1] = new Pieza(Color.Blanca);
+			this.tablero[6][0] = new Pieza(Color.Blanca);
+			
+			this.tablero[4][4] = new Pieza(Color.Blanca);
+			this.tablero[5][5] = new Pieza(Color.Blanca);
+			this.tablero[6][6] = new Pieza(Color.Blanca);
+			this.tablero[7][7] = new Pieza(Color.Blanca);
+			
+			this.tablero[2][2] = new Pieza(Color.Blanca);
+			this.tablero[1][1] = new Pieza(Color.Blanca);
+			
+			this.tablero[2][4] = new Pieza(Color.Blanca);
+			this.tablero[1][5] = new Pieza(Color.Blanca);
+			this.tablero[0][6] = new Pieza(Color.Blanca);
+		}
 
 	}
 		
@@ -105,28 +142,19 @@ public class Tablero {
 	
 	
 	public boolean colocarPieza(int fila, int columna, Color color) {
-		boolean colocarflag;
+		boolean girar = true;
 		
-		if (fila <0 || fila>7 || columna<0 || columna>7) {
-			colocarflag = false;
-		}
-		
-		else if ((this.tablero[fila][columna] != null ))  {
-			colocarflag = false;	
-		}
-		
-		else if ((checkColocarPieza(fila, columna, color) == false)) {
-			colocarflag = false;
-		}
-		
-		else {
-			colocarflag = true;
+		if (checkColocarPieza(fila, columna, color, !girar) == true){
 			this.tablero[fila][columna] = new Pieza(color);
+			return checkColocarPieza(fila, columna, color, girar);
+			
 		}
-	
-		return colocarflag;
+		else {
+			return false;
+			
+		}
+		
 	}
-	
 	
 	private boolean piezaJuntoApieza(int fila, int columna) {
 		boolean piezasJuntas = false;
@@ -171,7 +199,8 @@ public class Tablero {
 	}
 	
 	
-	private boolean checkColocarPieza(int fila, int columna, Color color) {	
+	private boolean checkColocarPieza(int fila, int columna, Color color,
+			boolean girar) {	
 		boolean blnFlag = false;
 		boolean piezaJuntas = piezaJuntoApieza(fila, columna);
 		
@@ -239,25 +268,27 @@ public class Tablero {
 		if (blnFlag) {
 			int casillas [] = new int[8];
 			casillas[0] = checkLines(fila-1, columna, color, 
-					Direccion.arriba);
+					Direccion.arriba, girar);
 			casillas[1] = checkLines(fila+1, columna, color, 
-					Direccion.abajo);
+					Direccion.abajo, girar);
 			casillas[2] = checkLines(fila, columna-1, color, 
-					Direccion.izquierda);
+					Direccion.izquierda, girar);
 			casillas[3] = checkLines(fila, columna+1, color, 
-					Direccion.derecha);
+					Direccion.derecha, girar);
 			casillas[4] = checkLines(fila-1, columna-1, color, 
-					Direccion.arribaIzquierda);
+					Direccion.arribaIzquierda, girar);
 			casillas[5] = checkLines(fila-1, columna+1, color, 
-					Direccion.arribaDerecha);
+					Direccion.arribaDerecha, girar);
 			casillas[6] = checkLines(fila+1, columna-1, color, 
-					Direccion.abajoIzquierda);
+					Direccion.abajoIzquierda, girar);
 			casillas[7] = checkLines(fila+1, columna+1, color, 
-					Direccion.abajoDerecha);
+					Direccion.abajoDerecha, girar);
 			
 			int check = 0;
 			for (int casilla : casillas) {
+				System.out.println(casilla);
 				if (casilla >0) {
+					
 					check =+ casilla;
 				}
 			}
@@ -272,12 +303,14 @@ public class Tablero {
 		return blnFlag;
 	}
 	
-	public boolean wrapperCheckColocarPieza(int fila, int columna, Color color){
-		return checkColocarPieza(fila, columna, color);
+	public boolean wrapperCheckColocarPieza(int fila, int columna, Color color,
+			boolean girar){
+		return checkColocarPieza(fila, columna, color, girar);
 	}
 	
 	
-	private int checkLines(int fila, int columna, Color color, Direccion dir) {
+	private int checkLines(int fila, int columna, Color color, Direccion dir, 
+			boolean girar) {
 		int row = 0;
 		int col = 0;
 		switch(dir) {
@@ -321,21 +354,25 @@ public class Tablero {
 			return 0;
 		}
 		
-		int check = checkLines(fila + row, columna + col, color, dir);
+		int check = checkLines(fila + row, columna + col, color, dir, girar);
 		System.out.println("hereAAA" +check);
 		if (check<0) {
 			System.out.println("RETURN2 -1: " + dir + ". RANGO. row:" + fila + 
 					" col:"+columna);
 			return -1;
 		}
-	
+		if (girar == true) {
+			this.tablero[fila][columna].girarPieza();
+		}
+		
+		System.out.println("here" +check);
 		return check+1;
 		
 	}
 	
 	public int wrapperCheckLines(int fila, int columna, Color color, Direccion 
-			dir) {
-		return checkLines(fila, columna, color, dir);
+			dir, boolean girar) {
+		return checkLines(fila, columna, color, dir, girar);
 		
 	}
 	
@@ -350,4 +387,3 @@ public class Tablero {
 	
 		
 }
-
