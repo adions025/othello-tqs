@@ -81,40 +81,6 @@ class TableroTest {
 	}
 	
 	@Test
-	void testColocarPiezaTableroFueradePosicion() {
-		
-		Tablero tablero = new Tablero();
-		
-		//
-		assertFalse(tablero.colocarPieza(0, -1, Color.Blanca));
-		assertFalse(tablero.colocarPieza(-1, -1, Color.Blanca));
-		assertFalse(tablero.colocarPieza(-1, 7, Color.Blanca));
-		assertFalse(tablero.colocarPieza(0, 8, Color.Blanca));
-		assertFalse(tablero.colocarPieza(-1, 8, Color.Blanca));
-		assertFalse(tablero.colocarPieza(8, 0, Color.Blanca));
-		assertFalse(tablero.colocarPieza(7, -1, Color.Blanca));
-		assertFalse(tablero.colocarPieza(8, -1, Color.Blanca));
-		assertFalse(tablero.colocarPieza(7, 8, Color.Blanca));
-		assertFalse(tablero.colocarPieza(8, 7, Color.Blanca));
-		assertFalse(tablero.colocarPieza(8, 8, Color.Blanca));	
-		
-		
-		assertFalse(tablero.colocarPieza(-5, 0, Color.Blanca));
-		assertFalse(tablero.colocarPieza(0, -3, Color.Blanca));
-		assertFalse(tablero.colocarPieza(-2, -4, Color.Blanca));
-		assertFalse(tablero.colocarPieza(-5, 7, Color.Blanca));
-		assertFalse(tablero.colocarPieza(-0, 11, Color.Blanca));
-		assertFalse(tablero.colocarPieza(-4, 9, Color.Blanca));
-		assertFalse(tablero.colocarPieza(9, 0, Color.Blanca));
-		assertFalse(tablero.colocarPieza(7, -2, Color.Blanca));
-		assertFalse(tablero.colocarPieza(10, -3, Color.Blanca));
-		assertFalse(tablero.colocarPieza(7, 10, Color.Blanca));
-		assertFalse(tablero.colocarPieza(9, 7, Color.Blanca));
-		assertFalse(tablero.colocarPieza(11, 13, Color.Blanca));
-			
-	}
-	
-	@Test
 	void testColocarPiezasAlado() {
 		//debe dejar colocar pieza solo si hay una pieza contraria alado
 		Tablero tablero = new Tablero();
