@@ -35,52 +35,6 @@ class TableroTest {
 	
 	
 	@Test
-	void testColocarPiezaTablero() {
-		
-		Tablero tablero = new Tablero();
-		
-		//esquinas
-		assertTrue(tablero.colocarPieza(0, 0, Color.Blanca));
-		assertFalse(tablero.colocarPieza(0, 0, Color.Negra));
-		
-		assertTrue(tablero.colocarPieza(0, 7, Color.Blanca));
-		assertFalse(tablero.colocarPieza(0, 7, Color.Negra));
-		
-		assertTrue(tablero.colocarPieza(7, 0, Color.Negra));
-		assertFalse(tablero.colocarPieza(7, 0, Color.Blanca));
-		
-		assertTrue(tablero.colocarPieza(7, 7, Color.Blanca));
-		assertFalse(tablero.colocarPieza(7, 7, Color.Negra));
-		
-		//laterales
-		assertTrue(tablero.colocarPieza(0, 5, Color.Blanca));
-		assertFalse(tablero.colocarPieza(0, 5, Color.Negra));
-		
-		assertTrue(tablero.colocarPieza(5, 0, Color.Negra));
-		assertFalse(tablero.colocarPieza(5, 0, Color.Blanca));
-
-		assertTrue(tablero.colocarPieza(7, 5, Color.Negra));
-		assertFalse(tablero.colocarPieza(7, 5, Color.Blanca));
-	
-		assertTrue(tablero.colocarPieza(5, 7, Color.Blanca));
-		assertFalse(tablero.colocarPieza(5, 7, Color.Negra));	
-		
-		//centros
-		assertFalse(tablero.colocarPieza(3, 3, Color.Negra));
-		assertFalse(tablero.colocarPieza(3, 4, Color.Negra));
-		
-		assertFalse(tablero.colocarPieza(3, 3, Color.Blanca));
-		assertFalse(tablero.colocarPieza(3, 4, Color.Blanca));
-		
-		assertFalse(tablero.colocarPieza(4, 3, Color.Negra));
-		assertFalse(tablero.colocarPieza(4, 4, Color.Negra));
-		
-		assertFalse(tablero.colocarPieza(4, 3, Color.Blanca));
-		assertFalse(tablero.colocarPieza(4, 4, Color.Blanca));
-		
-	}
-	
-	@Test
 	void testColocarPiezasAlado() {
 		//debe dejar colocar pieza solo si hay una pieza contraria alado
 		Tablero tablero = new Tablero();
