@@ -80,7 +80,7 @@ class TableroTest {
 		
 	}
 	
-	//@Test
+	@Test
 	void testColocarPiezaTableroFueradePosicion() {
 		
 		Tablero tablero = new Tablero();
@@ -114,7 +114,7 @@ class TableroTest {
 			
 	}
 	
-	//@Test
+	@Test
 	void testColocarPiezasAlado() {
 		//debe dejar colocar pieza solo si hay una pieza contraria alado
 		Tablero tablero = new Tablero();
@@ -173,7 +173,7 @@ class TableroTest {
 
 	}
 
-	//@Test
+	@Test
 	void testColocarPiezasDiferenteColor(){
 		/*
 			   	  1  2  3  4  5  6  7  8
@@ -293,7 +293,7 @@ class TableroTest {
 	
 	
 	
-	//@Test
+	@Test
 	void testCheckLimites() {
 		
 		Tablero tablero = new Tablero();

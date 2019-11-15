@@ -175,51 +175,65 @@ public class Tablero {
 		boolean blnFlag = false;
 		boolean piezaJuntas = piezaJuntoApieza(fila, columna);
 		
-		if(piezaJuntas == true) {
-			
-			if(this.tablero[fila-1][columna] != null) {
+		if(piezaJuntas == true && checkLimites(fila, columna) == true) {
+			//Arriba
+			if(checkLimites(fila-1, columna)==true
+					&& this.tablero[fila-1][columna] != null){
 				if(this.tablero[fila-1][columna].getColor() != color)  {
 					blnFlag = true;
 				}
 			}
-				
-		    if(this.tablero[fila+1][columna] != null) {
+			//Abajo	
+		    if(checkLimites(fila+1, columna)==true
+		    		&& this.tablero[fila+1][columna] != null ) {
 				if(this.tablero[fila+1][columna].getColor() != color)  {
 					blnFlag = true;
 				}
 		    }
-			
-		    if(this.tablero[fila][columna-1] != null) {
+			//Izquierda
+		    if(checkLimites(fila, columna-1) == true
+		    	&& this.tablero[fila][columna-1] != null) {
+		 
 				if(this.tablero[fila][columna-1].getColor() != color)  {
 					blnFlag = true;
 				}
 		    }
-		    if(this.tablero[fila][columna+1] != null) {
+		    //Derecha
+		    if(checkLimites(fila, columna+1)==true
+		       && this.tablero[fila][columna+1] != null) {
 				if(this.tablero[fila][columna+1].getColor() != color)  {
 					blnFlag = true;
 				}
 			}
-		    
-		    if(this.tablero[fila+1][columna+1] != null) {
-				if(this.tablero[fila+1][columna+1].getColor() != color)  {
-					blnFlag = true;
-				}
-			}
-		    if(this.tablero[fila-1][columna-1] != null) {
-				if(this.tablero[fila-1][columna-1].getColor() != color)  {
-					blnFlag = true;
-				}
-			}
-		    if(this.tablero[fila+1][columna-1] != null) {
+		    //AbajoIzquierda
+		    if(checkLimites(fila+1, columna-1)==true
+		    	&& this.tablero[fila+1][columna-1] != null){
+		    	
 				if(this.tablero[fila+1][columna-1].getColor() != color)  {
 					blnFlag = true;
 				}
 			}
-		    if(this.tablero[fila-1][columna+1] != null) {
+		    //AbajoDerecha
+		    if(checkLimites(fila+1, columna+1)==true
+		    		&& this.tablero[fila+1][columna+1] != null) {
+				if(this.tablero[fila+1][columna+1].getColor() != color)  {
+					blnFlag = true;
+				}
+			}
+		    //ArribaIzquierda
+		    if(checkLimites(fila-1, columna-1)==true
+		    		&& this.tablero[fila-1][columna-1] != null) {
+				if(this.tablero[fila-1][columna-1].getColor() != color)  {
+					blnFlag = true;
+				}
+			}
+		    //ArribaDerecha
+		    if(checkLimites(fila-1, columna+1)==true
+		    		&& this.tablero[fila-1][columna+1] != null) {
 				if(this.tablero[fila-1][columna+1].getColor() != color)  {
 					blnFlag = true;
 				}
-			}		    
+			}
 		}
 		
 		if (blnFlag) {
@@ -297,13 +311,13 @@ public class Tablero {
 			break;
 		}
 		
-		if (!checkLimites(fila+row, columna+col) || this.tablero[fila+row][columna+col] == null) {
+		if (!checkLimites(fila, columna) || this.tablero[fila][columna] == null) {
 			System.out.println("RETURN -1: " + dir + ". RANGO. row:" + fila + 
 					" col:"+columna);
 			return -1;
 		}
 		
-		if (this.tablero[fila+row][columna+col].getColor() == color) {
+		if (this.tablero[fila][columna].getColor() == color) {
 			return 0;
 		}
 		
@@ -314,7 +328,7 @@ public class Tablero {
 					" col:"+columna);
 			return -1;
 		}
-		System.out.println("here" +check);
+	
 		return check+1;
 		
 	}
@@ -336,3 +350,4 @@ public class Tablero {
 	
 		
 }
+
