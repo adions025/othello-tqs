@@ -2,18 +2,13 @@ package test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
-
-import juego.Juego;
-import juego.Pieza;
 import juego.Tablero;
 import juego.Color;
 import juego.Direccion;
 
 class TableroTest {
 
-
-	
-	@Test
+	//@Test
 	void testConstructorTablero() {
 	
 		Tablero tablero = new Tablero();
@@ -212,7 +207,6 @@ class TableroTest {
 	}
 	
 	
-	
 	@Test
 	void testCheckLimites() {
 		
@@ -245,6 +239,25 @@ class TableroTest {
 		assertFalse(tablero.wrappercheckLimites(9, 7));
 		assertFalse(tablero.wrappercheckLimites(11, 13));
 			
+	}
+	
+	@Test
+	void testCheckGirarLinias(){
+		Tablero tablero = new Tablero(1);
+		Tablero tableroresuleto = new Tablero(3);
+		tablero.colocarPieza(3, 3, Color.Blanca);
+				
+		for(int i = 0; i < tablero.getTablero().length; i++){
+			for(int j = 0; j < tablero.getTablero().length; j++) {
+				if (tablero.getTablero()[i][j] == null){
+					assertEquals(tableroresuleto.getTablero()[i][j], null);
+				} else {
+					assertEquals(tablero.getTablero()[i][j].getColor(), tableroresuleto.getTablero()[i][j].getColor());
+
+				}
+			}
+		}
+
 	}
 	
 }
