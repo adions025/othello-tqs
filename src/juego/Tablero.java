@@ -392,6 +392,7 @@ public class Tablero {
 		for (int i = 0; i<this.tablero.length; i++) {
 			for (int j = 0; j<this.tablero.length; j++) {
 				
+				if (this.tablero[i][j] !=null) {
 					if (this.tablero[i][j].getColor()== Color.Negra){
 					negrasTotal = negrasTotal+1;
 	
@@ -399,9 +400,9 @@ public class Tablero {
 					if (this.tablero[i][j].getColor()== Color.Blanca){
 						blancasTotal = blancasTotal+1;
 					}
+			  }
 			}
-		}
-			
+		}		
 	}
 	
 	public int getBlancasTotal() {
