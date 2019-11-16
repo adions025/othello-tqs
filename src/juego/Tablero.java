@@ -389,6 +389,8 @@ public class Tablero {
 	}
 	
 	public void updateScore(){
+		negrasTotal = 0;
+		blancasTotal = 0;
 		for (int i = 0; i<this.tablero.length; i++) {
 			for (int j = 0; j<this.tablero.length; j++) {
 				
@@ -402,7 +404,8 @@ public class Tablero {
 					}
 			  }
 			}
-		}		
+		}
+			
 	}
 	
 	public int getBlancasTotal() {
