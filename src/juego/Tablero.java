@@ -2,6 +2,8 @@ package juego;
 
 public class Tablero {
 	private Pieza [][] tablero;
+	private int blancasTotal; 
+	private int negrasTotal; 
 	
 	public Tablero() {
 		this.tablero = new Pieza[8][8];
@@ -159,38 +161,40 @@ public class Tablero {
 	private boolean piezaJuntoApieza(int fila, int columna) {
 		boolean piezasJuntas = false;
 		
-		if (fila-1 >= 0 && tablero[fila-1][columna] != null) {
-			piezasJuntas = true;
+		if (checkLimites(fila, columna) == true ) {
+			
+			if (fila-1 >= 0 && tablero[fila-1][columna] != null) {
+				piezasJuntas = true;
+			}
+			
+			if (fila+1 <= 7 && tablero[fila+1][columna] != null) {
+				piezasJuntas = true;
+			}
+			
+			if (columna-1 >= 0 && tablero[fila][columna-1] != null) {
+				piezasJuntas = true;
+			}
+			
+			if (columna+1 <= 7 && tablero[fila][columna+1] != null) {
+				piezasJuntas = true;
+			}
+			
+			if (fila+1 <= 7 &&columna+1 <= 7 && tablero[fila+1][columna+1] != null) {
+				piezasJuntas = true;
+			}
+			
+			if (fila-1 >= 0 &&columna-1 >= 0 && tablero[fila-1][columna-1] != null) {
+				piezasJuntas = true;
+			}
+			
+			if (fila+1 <=7 &&columna-1 >= 0 && tablero[fila+1][columna-1] != null) {
+				piezasJuntas = true;
+			}
+			
+			if (fila-1 >= 0 &&columna+1 <= 7 && tablero[fila-1][columna+1] != null) {
+				piezasJuntas = true;
+			}
 		}
-		
-		if (fila+1 <= 7 && tablero[fila+1][columna] != null) {
-			piezasJuntas = true;
-		}
-		
-		if (columna-1 >= 0 && tablero[fila][columna-1] != null) {
-			piezasJuntas = true;
-		}
-		
-		if (columna+1 <= 7 && tablero[fila][columna+1] != null) {
-			piezasJuntas = true;
-		}
-		
-		if (fila+1 <= 7 &&columna+1 <= 7 && tablero[fila+1][columna+1] != null) {
-			piezasJuntas = true;
-		}
-		
-		if (fila-1 >= 0 &&columna-1 >= 0 && tablero[fila-1][columna-1] != null) {
-			piezasJuntas = true;
-		}
-		
-		if (fila+1 <=7 &&columna-1 >= 0 && tablero[fila+1][columna-1] != null) {
-			piezasJuntas = true;
-		}
-		
-		if (fila-1 >= 0 &&columna+1 <= 7 && tablero[fila-1][columna+1] != null) {
-			piezasJuntas = true;
-		}
-		
 		return piezasJuntas;
 	}
 	
@@ -384,6 +388,33 @@ public class Tablero {
 		return checkLimites(fila, columna);
 	}
 	
+	public void updateScore(){
+		for (int i = 0; i<this.tablero.length; i++) {
+			for (int j = 0; j<this.tablero.length; j++) {
+				
+					if (this.tablero[i][j].getColor()== Color.Negra){
+					negrasTotal = negrasTotal+1;
 	
-		
+					}
+					if (this.tablero[i][j].getColor()== Color.Blanca){
+						blancasTotal = blancasTotal+1;
+					}
+			}
+		}
+			
+	}
+	
+	public int getBlancasTotal() {
+		return blancasTotal;
+	}
+
+
+	public int getNegrasTotal() {
+		return negrasTotal;
+	}
+
+	public boolean isFull() {
+		return this.blancasTotal + this.negrasTotal == 64;
+	}
+			
 }
