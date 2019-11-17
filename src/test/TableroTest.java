@@ -5,10 +5,12 @@ import org.junit.jupiter.api.Test;
 import juego.Tablero;
 import juego.Color;
 import juego.Direccion;
+import juego.Juego;
+import juego.MockTablero;
 
 class TableroTest {
 
-	//@Test
+	@Test
 	void testConstructorTablero() {
 	
 		Tablero tablero = new Tablero();
@@ -29,7 +31,7 @@ class TableroTest {
 	}
 	
 	
-	//@Test
+	@Test
 	void testColocarPiezasAlado() {
 		//debe dejar colocar pieza solo si hay una pieza contraria alado
 		Tablero tablero = new Tablero();
@@ -88,7 +90,7 @@ class TableroTest {
 
 	}
 
-	//@Test
+	@Test
 	void testColocarPiezasDiferenteColor(){
 		/*
 			   	  1  2  3  4  5  6  7  8
@@ -142,7 +144,7 @@ class TableroTest {
 		
 		}
 	
-	//@Test
+	@Test
 	void testCheckLines() {
 
 		Tablero tablero = new Tablero();
@@ -182,8 +184,10 @@ class TableroTest {
 		
 		
 		//
-		Tablero tableroTest = new Tablero(1);
-		
+		Juego othello = new Juego();
+		MockTablero tableroMock = new MockTablero(1);
+		othello.setTablero(tableroMock);
+		MockTablero tableroTest = (MockTablero) othello.getTablero();
 		//
 		assertEquals(1, tableroTest.wrapperCheckLines(2, 2, Color.Blanca, Direccion.arribaIzquierda, false));
 		assertEquals(2, tableroTest.wrapperCheckLines(2, 3, Color.Blanca, Direccion.arriba, false));
@@ -194,10 +198,11 @@ class TableroTest {
 		assertEquals(2, tableroTest.wrapperCheckLines(4, 2, Color.Blanca, Direccion.abajoIzquierda, false));
 		assertEquals(3, tableroTest.wrapperCheckLines(4, 4, Color.Blanca, Direccion.abajoDerecha, false));
 		
-
-		Tablero tableroTest2 = new Tablero(2);
-
 		//
+		MockTablero tableroMock2 = new MockTablero(2);
+		othello.setTablero(tableroMock2);
+		MockTablero tableroTest2 = (MockTablero) othello.getTablero();
+
 		assertEquals(1, tableroTest2.wrapperCheckLines(0, 1, Color.Negra, Direccion.derecha, false));
 		assertEquals(6, tableroTest2.wrapperCheckLines(1, 1, Color.Negra, Direccion.abajoDerecha, false));
 		assertEquals(5, tableroTest2.wrapperCheckLines(1, 0, Color.Negra, Direccion.abajo, false));
@@ -207,7 +212,7 @@ class TableroTest {
 	}
 	
 	
-	//@Test
+	@Test
 	void testCheckLimites() {
 		
 		Tablero tablero = new Tablero();
@@ -238,13 +243,26 @@ class TableroTest {
 		assertFalse(tablero.wrappercheckLimites(7, 10));
 		assertFalse(tablero.wrappercheckLimites(9, 7));
 		assertFalse(tablero.wrappercheckLimites(11, 13));
-			
+		
+		//esquinas vf
+		assertTrue(tablero.wrappercheckLimites(0, 0));
+		assertTrue(tablero.wrappercheckLimites(0, 7));
+		assertTrue(tablero.wrappercheckLimites(7, 0));
+		assertTrue(tablero.wrappercheckLimites(7, 7));
+
+		//laterales
+		assertTrue(tablero.wrappercheckLimites(0, 5));
+		assertTrue(tablero.wrappercheckLimites(5, 0));
+		assertTrue(tablero.wrappercheckLimites(7, 5));
+		assertTrue(tablero.wrappercheckLimites(5, 7));
+		
+
 	}
 	
-	//@Test
+	@Test
 	void testCheckGirarLinias(){
-		Tablero tablero = new Tablero(1);
-		Tablero tableroresuleto = new Tablero(3);
+		MockTablero tablero = new MockTablero(1);
+		MockTablero tableroresuleto = new MockTablero(3);
 		tablero.colocarPieza(3, 3, Color.Blanca);
 				
 		for(int i = 0; i < tablero.getTablero().length; i++){
@@ -260,7 +278,7 @@ class TableroTest {
 
 	}
 	
-	@Test
+	//@Test
 	void testActualizarPuntos() {
 		Tablero tablero = new Tablero();
 		
