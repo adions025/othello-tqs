@@ -137,7 +137,7 @@ public class Tablero {
 		boolean blnFlag = false;
 		boolean piezaJuntas = piezaJuntoApieza(fila, columna);
 		
-		if(piezaJuntas == true && checkLimites(fila, columna) == true) {
+		if(piezaJuntas == true /*&& checkLimites(fila, columna) == true*/) {
 			//Arriba
 			if(checkLimites(fila-1, columna)==true
 					&& this.tablero[fila-1][columna] != null){
