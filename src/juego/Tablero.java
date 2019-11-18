@@ -1,11 +1,22 @@
 package juego;
+/*
+ * 
+ * @author Adonis Gonzalez
+ * @author Jonatan Luzon
+ * 
+ * Test i Qualitat del Software
+ * 
+ */
 
 public class Tablero {
-	private Pieza [][] tablero;
+	protected Pieza [][] tablero;
 	private int blancasTotal; 
 	private int negrasTotal; 
 	
-	public Tablero() {
+	/*
+	 * constrcutor tablero
+	 */
+	public Tablero() {		
 		this.tablero = new Pieza[8][8];
 		this.tablero[3][3] = new Pieza(Color.Blanca);
 		this.tablero[3][4] = new Pieza(Color.Negra);
@@ -13,105 +24,12 @@ public class Tablero {
 		this.tablero[4][4] = new Pieza(Color.Blanca);
 	}
 	
-	public Tablero(int numTablero) {
-		
-		if (numTablero == 1) {
-			this.tablero = new Pieza[8][8];
-			this.tablero[0][3] = new Pieza(Color.Blanca);
-			this.tablero[1][3] = new Pieza(Color.Negra);
-			this.tablero[2][3] = new Pieza(Color.Negra);
-			//this.tablero[3][3] = new Pieza(Color.Blanca);//objetivo
-			this.tablero[4][3] = new Pieza(Color.Negra);
-			this.tablero[5][3] = new Pieza(Color.Negra);
-			this.tablero[6][3] = new Pieza(Color.Negra);
-			this.tablero[7][3] = new Pieza(Color.Negra);
-			
-			this.tablero[3][4] = new Pieza(Color.Negra);
-			this.tablero[3][5] = new Pieza(Color.Negra);
-			this.tablero[3][6] = new Pieza(Color.Negra);
-			this.tablero[3][7] = new Pieza(Color.Negra);
-			
-			this.tablero[3][2] = new Pieza(Color.Negra);
-			this.tablero[3][1] = new Pieza(Color.Blanca);
-			
-			this.tablero[4][2] = new Pieza(Color.Negra);
-			this.tablero[5][1] = new Pieza(Color.Negra);
-			this.tablero[6][0] = new Pieza(Color.Blanca);
-			
-			this.tablero[4][4] = new Pieza(Color.Negra);
-			this.tablero[5][5] = new Pieza(Color.Negra);
-			this.tablero[6][6] = new Pieza(Color.Negra);
-			this.tablero[7][7] = new Pieza(Color.Blanca);
-			
-			this.tablero[2][2] = new Pieza(Color.Negra);
-			this.tablero[1][1] = new Pieza(Color.Blanca);
-			
-			this.tablero[2][4] = new Pieza(Color.Negra);
-			this.tablero[1][5] = new Pieza(Color.Negra);
-			this.tablero[0][6] = new Pieza(Color.Blanca);
-		}
-		
-		if (numTablero == 2) {
-			this.tablero = new Pieza[8][8];
-			this.tablero[0][1] = new Pieza(Color.Blanca);
-			this.tablero[0][2] = new Pieza(Color.Negra);
-			
-			this.tablero[1][0] = new Pieza(Color.Blanca);
-			this.tablero[2][0] = new Pieza(Color.Blanca);
-			this.tablero[3][0] = new Pieza(Color.Blanca);
-			this.tablero[4][0] = new Pieza(Color.Blanca);
-			this.tablero[5][0] = new Pieza(Color.Blanca);
-			this.tablero[6][0] = new Pieza(Color.Negra);
-			
-			this.tablero[1][1] = new Pieza(Color.Blanca);
-			this.tablero[2][2] = new Pieza(Color.Blanca);
-			this.tablero[3][3] = new Pieza(Color.Blanca);
-			this.tablero[4][4] = new Pieza(Color.Blanca);
-			this.tablero[5][5] = new Pieza(Color.Blanca);
-			this.tablero[6][6] = new Pieza(Color.Blanca);
-			this.tablero[7][7] = new Pieza(Color.Negra);
-		}
-		if (numTablero == 3) {
-			this.tablero = new Pieza[8][8];
-			this.tablero[0][3] = new Pieza(Color.Blanca);
-			this.tablero[1][3] = new Pieza(Color.Blanca);
-			
-			this.tablero[2][3] = new Pieza(Color.Blanca);
-			this.tablero[3][3] = new Pieza(Color.Blanca);//objetivo
-			
-			this.tablero[4][3] = new Pieza(Color.Negra);
-			this.tablero[5][3] = new Pieza(Color.Negra);
-			this.tablero[6][3] = new Pieza(Color.Negra);
-			this.tablero[7][3] = new Pieza(Color.Negra);
-			
-			this.tablero[3][4] = new Pieza(Color.Negra);
-			this.tablero[3][5] = new Pieza(Color.Negra);
-			this.tablero[3][6] = new Pieza(Color.Negra);
-			this.tablero[3][7] = new Pieza(Color.Negra);
-			
-			this.tablero[3][2] = new Pieza(Color.Blanca);
-			this.tablero[3][1] = new Pieza(Color.Blanca);
-			
-			this.tablero[4][2] = new Pieza(Color.Blanca);
-			this.tablero[5][1] = new Pieza(Color.Blanca);
-			this.tablero[6][0] = new Pieza(Color.Blanca);
-			
-			this.tablero[4][4] = new Pieza(Color.Blanca);
-			this.tablero[5][5] = new Pieza(Color.Blanca);
-			this.tablero[6][6] = new Pieza(Color.Blanca);
-			this.tablero[7][7] = new Pieza(Color.Blanca);
-			
-			this.tablero[2][2] = new Pieza(Color.Blanca);
-			this.tablero[1][1] = new Pieza(Color.Blanca);
-			
-			this.tablero[2][4] = new Pieza(Color.Blanca);
-			this.tablero[1][5] = new Pieza(Color.Blanca);
-			this.tablero[0][6] = new Pieza(Color.Blanca);
-		}
-
-	}
-		
-
+	/*
+	 * return: la representancion de teablero
+	 * y las piezas en su posicion correspondiente
+	 * 
+	 */
+	@Override
 	public String toString() 
 	{
 		String frame = "   1  2  3  4  5  6  7  8\n";
@@ -125,8 +43,6 @@ public class Tablero {
 					switch (this.tablero[i][j].getColor()) {
 					case Negra: frame += "  N"; break;
 					case Blanca: frame += "  B"; break;	
-					default:
-						frame += "?";
 					}
 
 				}
@@ -142,22 +58,32 @@ public class Tablero {
 		return this.tablero;
 	}
 	
-	
+	/*
+	 * coloca la pieza en el tablero
+	 */
 	public boolean colocarPieza(int fila, int columna, Color color) {
 		boolean girar = true;
+		boolean blnPiezaColocada = false;
 		
 		if (checkColocarPieza(fila, columna, color, !girar) == true){
 			this.tablero[fila][columna] = new Pieza(color);
-			return checkColocarPieza(fila, columna, color, girar);
+			blnPiezaColocada = checkColocarPieza(fila, columna, color, girar);
+			updateScore();
+			return blnPiezaColocada;
 			
 		}
 		else {
-			return false;
+			return blnPiezaColocada;
 			
 		}
 		
+		
 	}
 	
+	/*
+	 * asegura antes de colocar una pieza que exista otra junto a 
+	 * las coordenadas dadaas
+	 */
 	private boolean piezaJuntoApieza(int fila, int columna) {
 		boolean piezasJuntas = false;
 		
@@ -202,7 +128,10 @@ public class Tablero {
 		return piezaJuntoApieza(fila, columna);
 	}
 	
-	
+	/*
+	 *esta funcion se encarga de colocar la pieza y de girar 
+	 *el resto de piezas que correspondan.
+	 */
 	private boolean checkColocarPieza(int fila, int columna, Color color,
 			boolean girar) {	
 		boolean blnFlag = false;
@@ -290,7 +219,6 @@ public class Tablero {
 			
 			int check = 0;
 			for (int casilla : casillas) {
-				System.out.println(casilla);
 				if (casilla >0) {
 					
 					check =+ casilla;
@@ -312,7 +240,13 @@ public class Tablero {
 		return checkColocarPieza(fila, columna, color, girar);
 	}
 	
-	
+	/*
+	 * funcion recursiva encargada de comprobar si al final de alguna de las 
+	 * lineas que salen de la pieza (horizontal, vertical y las dos diagonales) 
+	 * se encontraba una pieza del mismo color que la colocada.
+	 * 
+	 * @return un int con el numero de posiciones hasta la pieza.
+	 */
 	private int checkLines(int fila, int columna, Color color, Direccion dir, 
 			boolean girar) {
 		int row = 0;
@@ -349,8 +283,6 @@ public class Tablero {
 		}
 		
 		if (!checkLimites(fila, columna) || this.tablero[fila][columna] == null) {
-			System.out.println("RETURN -1: " + dir + ". RANGO. row:" + fila + 
-					" col:"+columna);
 			return -1;
 		}
 		
@@ -359,17 +291,13 @@ public class Tablero {
 		}
 		
 		int check = checkLines(fila + row, columna + col, color, dir, girar);
-		System.out.println("hereAAA" +check);
 		if (check<0) {
-			System.out.println("RETURN2 -1: " + dir + ". RANGO. row:" + fila + 
-					" col:"+columna);
 			return -1;
 		}
 		if (girar == true) {
 			this.tablero[fila][columna].girarPieza();
 		}
 		
-		System.out.println("here" +check);
 		return check+1;
 		
 	}
@@ -380,6 +308,10 @@ public class Tablero {
 		
 	}
 	
+	/*
+	 * funcion se encarga de asegurar que la pieza sera introducida dentro 
+	 * de los limites del Tablero, en el caso del Othello en un Tablero.
+	 */
 	private boolean checkLimites(int fila, int columna) {
 		return fila >= 0 && fila <= 7 && columna >= 0 && columna <= 7;
 	}
@@ -388,6 +320,10 @@ public class Tablero {
 		return checkLimites(fila, columna);
 	}
 	
+	/*
+	 * Se encarga de actualizar la puntuacion. 
+	 * Recorre el tablero contando las piezas blancas y negras que hay.
+	 */
 	public void updateScore(){
 		negrasTotal = 0;
 		blancasTotal = 0;
