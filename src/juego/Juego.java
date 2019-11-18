@@ -2,9 +2,8 @@ package juego;
 
 public class Juego {
 
-	private static Tablero tablero;
-	private static Jugador[] jugadores;
-	
+	private  Tablero tablero;
+	private Jugador[] jugadores;
 
 	public Juego() {
 		this.tablero = new Tablero();
@@ -14,12 +13,18 @@ public class Juego {
 	}
 	
 	
-	public static Tablero getTablero() {
+	public Tablero getTablero() {
 		return tablero;
 	}
 
+	public void setTablero(Tablero tablero) {
+		this.tablero = tablero;
+	}
 
-	public static Jugador getJugador(int jugador) {
+
+	public Jugador getJugador(int jugador) {
 		return jugadores[jugador];
 	}
+	
+	
 }

@@ -9,15 +9,15 @@ import juego.Jugador;
 class JuegoTest {
 	
 	@Test
-	void testConstrygetJugador() {
+	void testConstruct() {
 		Juego othello = new Juego();
 		Jugador jugador1;
-		jugador1 = Juego.getJugador(0);
+		jugador1 = othello.getJugador(0);
 		assertEquals(Color.Negra, jugador1.getColor());
 		
 		Jugador jugador2;
-		jugador2 = Juego.getJugador(1);
+		jugador2 = othello.getJugador(1);
 		assertEquals(Color.Blanca, jugador2.getColor());
-		
 	}
+	
 }
