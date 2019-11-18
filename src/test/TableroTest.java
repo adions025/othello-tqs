@@ -188,6 +188,7 @@ class TableroTest {
 		MockTablero tableroMock = new MockTablero(1);
 		othello.setTablero(tableroMock);
 		MockTablero tableroTest = (MockTablero) othello.getTablero();
+
 		//
 		assertEquals(1, tableroTest.wrapperCheckLines(2, 2, Color.Blanca, Direccion.arribaIzquierda, false));
 		assertEquals(2, tableroTest.wrapperCheckLines(2, 3, Color.Blanca, Direccion.arriba, false));
