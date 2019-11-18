@@ -11,14 +11,11 @@ class JugadorTest {
 
 	@Test
 	void testGetColorJugador() {
-		
 		Jugador jugador1 = new Jugador(Color.Negra);
-		jugador1.getColor();
-		assertEquals(Color.Negra, Color.Negra);
+		assertEquals(Color.Negra, jugador1.getColor());
 		
 		Jugador jugador2 = new Jugador(Color.Blanca);
-		jugador2.getColor();
-		assertEquals(Color.Blanca, Color.Blanca);
+		assertEquals(Color.Blanca, jugador2.getColor());
 	}
 
 }
